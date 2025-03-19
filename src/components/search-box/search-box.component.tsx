@@ -1,18 +1,10 @@
 import './search-box.styles.css';
-
-interface ISearchBoxProps {
-  className: string;
-  placeholder?: string;
-}
-
-interface ISearchBoxProps {
-  onChangeHandler: (a:string) => void
-}
+import { ChangeEventHandler } from 'react';
 
 type SearchBoxProps = {
   className: string;
   placeholder?:string;
-  onChangeHandler: (a:string) => void;
+  onChangeHandler: ChangeEventHandler<HTMLInputElement>
 }
 
 const SearchBox = ({className, placeholder, onChangeHandler}: SearchBoxProps) => (
@@ -20,7 +12,7 @@ const SearchBox = ({className, placeholder, onChangeHandler}: SearchBoxProps) =>
             className={`search-box ${className}`}
             type='search' 
             placeholder={placeholder}
-            onChange={(e) => onChangeHandler(e)} 
+            onChange={onChangeHandler} 
       />
         );
 
